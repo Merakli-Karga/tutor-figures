@@ -1,4 +1,6 @@
 # Install Figures app
 ARG FIGURES_REPOSITORY=git+https://github.com/appsembler/figures.git
-ARG FIGURES_VERSION=build-0.3.19
+ARG FIGURES_VERSION=95ac4ac2153166387a7142f12a92908efa8c0647
 RUN pip install -e $FIGURES_REPOSITORY@$FIGURES_VERSION#egg=figures
+RUN cd /openedx/venv/src/figures/frontend && npm install && npm install yarn && yarn run build -- --stats
+RUN pwd
